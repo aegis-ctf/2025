@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>福爾摩斯夢遊仙境</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:600|Staatliches&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Noto+Serif+TC:wght@500&family=Staatliches&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <h1>福爾摩斯夢遊仙境</h1>
+
+    <h2>你是英國名偵探-夏洛克·福爾摩斯，誤觸一封可疑郵件後，掉入時空裂縫。只有完成時空事件，才能回到現代！</h2>
+
+    <p class="intro-text">小心！這可能是資安詐騙...</p>
+
+    <ul class="rules">
+      <li>共兩關，找出畫面中有問題的地方。</li>
+      <li>每關答對會獲得一張提示字卡。</li>
+      <li><strong>限時 10 分鐘！</strong></li>
+    </ul>
+
+    <div class="start-btn-container">
+      <button id="start" onclick="startGame()">Start Game</button>
+    </div> <!--start-btn-container-->
+  </div> <!--wrapper-->
+
+  <script>
+    function startGame() {
+      window.location.href = 'game1.html'; // 改成第一關的網址
+    }
+  </script>
+</body>
+</html>
