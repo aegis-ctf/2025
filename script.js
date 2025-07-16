@@ -40,6 +40,22 @@ const colorMap = {  //answers
   4: "#F0A04B",   // orange 
 };
 
+const cardLabels = {
+  heart: ["J", "Q", "K", "A"],
+  diamond: ["K", "Q", "A", "J"],
+  club: ["A", "Q", "K", "J"],
+  spade: ["Q", "A", "K", "J"]
+};
+
+function setCardLabels(symbol) {
+  const labels = cardLabels[symbol];
+  const labelEls = document.querySelectorAll("#level-3 .card-label");
+  labels.forEach((char, index) => {
+    labelEls[index].textContent = char;
+  });
+}
+
+
 function setInputColors(symbol) {
   const code = getAnswer(symbol); // 比如 "3214"
   const OTPinputs = document.querySelectorAll("#level-3 .input_fields input");
@@ -63,6 +79,61 @@ const levels = [
   { url: "http://paypa1.com", message: "🎉 恭喜你答對了！🎉", card: "" },
   { url: "http://paypa1.com", message: "🎉 恭喜你答對了！🎉", card: "" }
 ];
+function setupAutoAdvanceInputs() {
+  const inputs = document.querySelectorAll("#level-3 .input_fields input");
+  let lastDeletedIndex = null;
+
+  inputs.forEach((input, idx) => {
+    // 先清除事件（避免重複綁定）
+    input.onkeydown = null;
+    input.oninput = null;
+    input.onfocus = null;
+
+    input.onkeydown = (e) => {
+      if (e.key === "Backspace") {
+        if (input.value !== "") {
+          e.preventDefault();
+          input.value = "";
+          lastDeletedIndex = idx;
+          setTimeout(() => input.focus(), 0);
+        } else if (idx > 0) {
+          inputs[idx - 1].focus();
+        }
+      }
+    };
+
+    input.oninput = (e) => {
+      const val = input.value.replace(/[^0-9]/g, "");
+
+      if (lastDeletedIndex === idx && val.length === 1) {
+        // 使用者刪除後立即輸入 → 保留這個數字，焦點不要移動
+        input.value = val[0];
+        lastDeletedIndex = null;
+        return;
+      }
+
+      // 一般輸入情況
+      if (val.length > 0) {
+        input.value = val[0];
+        if (idx < inputs.length - 1) {
+          inputs[idx + 1].focus();
+        }
+      } else {
+        input.value = "";
+      }
+
+      lastDeletedIndex = null;
+    };
+
+    input.onfocus = () => {
+      input.select();
+    };
+  });
+}
+
+
+
+
 
 function stopTimer() {
   timerRunning = false; //停止倒數
@@ -137,28 +208,29 @@ function checkAnswer() {
       popup.style.display = "block";
       popup.querySelector(".button-13").style.display = "block";
     } else {
-      popupText.textContent = "❌ 很可惜，這不是正確答案！";
-      popup.style.display = "block";
+  popupText.textContent = "❌ 很可惜，這不是正確答案！";
+  popup.style.display = "block";
 
-      /*const correctAnswer = "1234";*/
+  OTPinputs.forEach((input, index) => {
+    if (input.value !== correctAnswer[index]) {
+      input.classList.add("input-error");
+    }
+  });
 
-      OTPinputs.forEach((input, index) => {
-        if (input.value !== correctAnswer[index]) {
-          input.classList.add("input-error");
-        }//if
-      });
+  setTimeout(() => {
+    OTPinputs.forEach((input) => {
+      input.classList.remove("input-error");
+      input.value = "";
+      input.disabled = false; // ✅ 全部都要能再輸入
+    });
+    setInputColors(chosenSymbol); 
+    setupAutoAdvanceInputs();  
 
-      setTimeout(() => {
-        OTPinputs.forEach((input, index) => {
-          input.classList.remove("input-error");
-          input.value = "";
-          input.disabled= index !== 0;
-        });
-        OTPinputs[0].focus();
-        
-         popup.style.display = "none";  // 隱藏popup
-      }, 1000);
-    } // else
+    OTPinputs[0].focus(); // 再次聚焦第一格
+    popup.style.display = "none";  // 隱藏 popup
+  }, 1000);
+}//else
+
   } // 第3關 currentLevel == 2結束
 }
 
@@ -461,7 +533,7 @@ function showCard(level) {
 
 function showCompletionScreen() {
   stopTimer();
-  renderAnswerDisplay();
+  // renderAnswerDisplay(); //display answer
   document.getElementById("completion-screen").style.display = "block";
 }
 
@@ -511,6 +583,21 @@ function nextLevel() {
     document.getElementById("level-2").style.display = "none";
 
     document.getElementById("level-3").style.display = "block";
+    
+    const OTPinputs = document.querySelectorAll("#level-3 .input_fields input");
+ OTPinputs.forEach(input => {
+         
+      input.disabled = false;
+      input.value = "";
+    });
+
+
+
+    setCardLabels(chosenSymbol);
+    setInputColors(chosenSymbol); 
+    setupAutoAdvanceInputs();   
+    OTPinputs[0].focus(); // 初始 focus 在第一格
+    
     // 把符號放到「門」前面
 const sayEl = document.getElementById("level-3-say");
 sayEl.innerHTML = `請進入 ${symbols[chosenSymbol]} 門，並於答案卡輸入答案...`;
