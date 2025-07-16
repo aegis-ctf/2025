@@ -1050,6 +1050,16 @@ h2 {
   border-width: 2px;
 }
 
+/* 隱藏數字 input 的上下箭頭 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
 
 
 .container {
@@ -1081,6 +1091,7 @@ h2 {
   padding-top: 20px;
 }
 
+
 form .input_fields {
   width: 100%;
   height: auto;
@@ -1089,24 +1100,39 @@ form .input_fields {
   justify-content: space-evenly;
 }
 
+
+.input_fields {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px; /* 可調整間距 */
+}
+
+.input-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 60px; /* 限制最大寬度 */
+}
+
 .input_fields input {
-  max-width: 20%;
+  width: 100%;
   height: 60px;
   text-align: center;
   border-radius: 5px;
   border: none;
-  /*background: #f0f0f0;*/
   font-size: 25px;
+  box-sizing: border-box;
 }
 
-.input_fields input::-webkit-inner-spin-button,
-.input_fields input::-webkit-outer-spin-button {
-  display: none;
-}
 
-.input_fields input:focus {
-  outline: 3px solid #8b6f47;
-  outline-offset: 2px;
+.card-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444;
+  font-family: sans-serif;
 }
 
 
@@ -1171,6 +1197,9 @@ form button:hover {
   margin:0 auto;/*置中*/
   
 }
+
+
+
 
 @media (max-width: 768px) {
    .browser {
