@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>福爾摩斯夢遊仙境</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -24,7 +24,7 @@
          <!--機器人對話框-->
 <div class="robotBox">
   <div class="robotIcon">
-    <img src="https://github.com/aegis-ctf/2025/blob/main/robot_detective.png?raw=true">
+    <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
   </div>
   <div class="bubble">
     <div class="says">
@@ -243,7 +243,7 @@
   <!--機器人對話框-->
 <div class="robotBox">
   <div class="robotIcon">
-    <img src="https://github.com/aegis-ctf/2025/blob/main/robot_detective.png?raw=true">
+    <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
   </div>
   <div class="bubble">
     <div class="says">
@@ -381,13 +381,25 @@
   <h4>答案卡</h4>
 
   <form action="#">
-    <div class="input_fields">
-      <input type="number" >
-      <input type="number"  disabled>
-      <input type="number"  disabled>
-      <input type="number"  disabled>
+<div class="input_fields">
+  <div class="input-wrapper">
+    <div class="card-label"></div>
+   <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+  </div> <!--input-wrapper結束-->
+  <div class="input-wrapper">
+    <div class="card-label"></div>
+    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" >
+  </div> <!--input-wrapper結束-->
+  <div class="input-wrapper">
+    <div class="card-label"></div>
+    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" >
+  </div> <!--input-wrapper結束-->
+  <div class="input-wrapper">
+    <div class="card-label"></div>
+    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" >
+  </div> <!--input-wrapper結束-->
+</div> <!--input_fields結束-->
 
-    </div><!--input_fields結束-->
           
     <!-- 第3關的提示卡 -->
     <button class="button" type="button" onclick="checkAnswer()">確認送出</button>
@@ -405,15 +417,15 @@
     
 
 </div>  <!-- 關閉 #level-3 -->      
-      
-      
+            
 <div id="completion-screen" class="completion-container" style="display: none;">
     <h2>✨恭喜你闖關成功並取得鑰匙！✨</h2>
   <!-- ✅ 新增這個答案卡顯示區 -->
+  <!--
   <div id="final-answer-display" class="answer-display"></div>
-
+-->
   <div class="Qrcode">
-  <img src="https://github.com/aegis-ctf/2025/blob/main/qrcode_smiley123kc.png?raw=true">
+  <img src="https://github.com/smiley123kc/2025aegis/blob/main/qrcode_smiley123kc.png?raw=true">
 </div> <!--Qrcode end-->   
 <div class="fireworks">
 	<div class="firework">
@@ -497,7 +509,7 @@
     <div class="text-glitch" data-text="GAME OVER">GAME OVER</div><!--結束text-glitch-->
 </div> <!--結束gameOverScreen-->
   
-<script src="script.js"></script>
+<script src="script2.js"></script>
 
 </body>
 </html>
