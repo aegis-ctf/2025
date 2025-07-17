@@ -5,7 +5,6 @@ let timerRunning = true; //倒數計時器是否繼續
 let clickedCart = false;
 let clickedBuy = false;
 
-
 const types = ["heart", "diamond", "spade", "club"];
 
 // 顯示 chosenSymbol（你可以用 emoji 或字串）
@@ -16,7 +15,6 @@ const symbols = {
   club: "♣️"
 };
 
-
 const chosenSymbol = types[Math.floor(Math.random() * types.length)];
 
 const baseDigits = {
@@ -26,18 +24,20 @@ const baseDigits = {
   orange: 4
 };
 
-const symbolOrders = {  //answers
-  heart: ["beige", "green", "yellow", "orange"],   // 3214
+const symbolOrders = {
+  //answers
+  heart: ["beige", "green", "yellow", "orange"], // 3214
   diamond: ["yellow", "beige", "green", "orange"], // 1324
-  club: ["green", "orange", "beige", "yellow"],    // 2431
-  spade: ["orange", "green", "yellow", "beige"]    // 4213
+  club: ["green", "orange", "beige", "yellow"], // 2431
+  spade: ["orange", "green", "yellow", "beige"] // 4213
 };
 
-const colorMap = {  //answers
-  1: "#FADA7A",   // yellow 
-  2: "#B1C29E",   // green  
-  3: "#FCE7C8",   // beige
-  4: "#F0A04B",   // orange 
+const colorMap = {
+  //answers
+  1: "#FADA7A", // yellow
+  2: "#B1C29E", // green
+  3: "#FCE7C8", // beige
+  4: "#F0A04B" // orange
 };
 
 const cardLabels = {
@@ -55,7 +55,6 @@ function setCardLabels(symbol) {
   });
 }
 
-
 function setInputColors(symbol) {
   const code = getAnswer(symbol); // 比如 "3214"
   const OTPinputs = document.querySelectorAll("#level-3 .input_fields input");
@@ -66,74 +65,72 @@ function setInputColors(symbol) {
   }
 }
 
-
 function getAnswer(symbol) {
   const order = symbolOrders[symbol]; // 例如 ["beige", "green", "yellow", "orange"]
-  return order.map(color => baseDigits[color]).join(""); // 轉成數字再合併
+  return order.map((color) => baseDigits[color]).join(""); // 轉成數字再合併
 }
-
-
 
 const levels = [
   { url: "https://amaz0n.com", message: "🎉 恭喜你答對了！🎉", card: "" },
   { url: "http://paypa1.com", message: "🎉 恭喜你答對了！🎉", card: "" },
   { url: "http://paypa1.com", message: "🎉 恭喜你答對了！🎉", card: "" }
 ];
-function setupAutoAdvanceInputs() {
+
+function updateSubmitButtonState() {
   const inputs = document.querySelectorAll("#level-3 .input_fields input");
-  let lastDeletedIndex = null;
-
-  inputs.forEach((input, idx) => {
-    // 先清除事件（避免重複綁定）
-    input.onkeydown = null;
-    input.oninput = null;
-    input.onfocus = null;
-
-    input.onkeydown = (e) => {
-      if (e.key === "Backspace") {
-        if (input.value !== "") {
-          e.preventDefault();
-          input.value = "";
-          lastDeletedIndex = idx;
-          setTimeout(() => input.focus(), 0);
-        } else if (idx > 0) {
-          inputs[idx - 1].focus();
-        }
-      }
-    };
-
-    input.oninput = (e) => {
-      const val = input.value.replace(/[^0-9]/g, "");
-
-      if (lastDeletedIndex === idx && val.length === 1) {
-        // 使用者刪除後立即輸入 → 保留這個數字，焦點不要移動
-        input.value = val[0];
-        lastDeletedIndex = null;
-        return;
-      }
-
-      // 一般輸入情況
-      if (val.length > 0) {
-        input.value = val[0];
-        if (idx < inputs.length - 1) {
-          inputs[idx + 1].focus();
-        }
-      } else {
-        input.value = "";
-      }
-
-      lastDeletedIndex = null;
-    };
-
-    input.onfocus = () => {
-      input.select();
-    };
-  });
+  const allFilled = Array.from(inputs).every((input) => input.value !== "");
+  const submitButton = document.querySelector("#level-3 button[type='button']");
+  if (allFilled) {
+    submitButton.classList.add("active");
+  } else {
+    submitButton.classList.remove("active");
+  }
 }
 
+function setupAutoAdvanceInputs() {
+  const oldInputs = document.querySelectorAll("#level-3 .input_fields input");
 
+  oldInputs.forEach((input, idx) => {
+    const newInput = input.cloneNode(true);
+    input.parentNode.replaceChild(newInput, input);
 
+    newInput.addEventListener("input", (e) => {
+      const val = newInput.value.replace(/[^0-9]/g, "");
+      if (val) {
+        newInput.value = val[0];
 
+        // 重新取得最新的 inputs（含新綁定的 input）
+        const currentInputs = document.querySelectorAll(
+          "#level-3 .input_fields input"
+        );
+        if (idx < currentInputs.length - 1) {
+          currentInputs[idx + 1].focus();
+        }
+      }
+      updateSubmitButtonState();
+    });
+
+    newInput.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace") {
+        e.preventDefault();
+        if (newInput.value !== "") {
+          newInput.value = "";
+        } else if (idx > 0) {
+          const currentInputs = document.querySelectorAll(
+            "#level-3 .input_fields input"
+          );
+          currentInputs[idx - 1].focus();
+        }
+      }
+    });
+
+    newInput.addEventListener("focus", () => {
+      newInput.select();
+    });
+  });
+
+  console.log("✅ setupAutoAdvanceInputs() 已完成綁定");
+}
 
 function stopTimer() {
   timerRunning = false; //停止倒數
@@ -168,18 +165,17 @@ function renderAnswerDisplay() {
   container.innerHTML = "";
 
   const order = symbolOrders[chosenSymbol];
-  const digits = order.map(color => baseDigits[color]);
+  const digits = order.map((color) => baseDigits[color]);
 
-  digits.forEach(digit => {
-	const span = document.createElement("span");
-	span.textContent = `${digit}`;
-	span.style.backgroundColor = colorMap[digit];
-  span.style.border = "2px solid white";
-  /*span.style.textShadow = "1px 1px 2px #999";*/
-	container.appendChild(span);
+  digits.forEach((digit) => {
+    const span = document.createElement("span");
+    span.textContent = `${digit}`;
+    span.style.backgroundColor = colorMap[digit];
+    span.style.border = "2px solid white";
+    /*span.style.textShadow = "1px 1px 2px #999";*/
+    container.appendChild(span);
   });
 }
-
 
 // 檢查答案
 function checkAnswer() {
@@ -195,7 +191,7 @@ function checkAnswer() {
       levels[currentLevel].message;
   } else if (currentLevel == 2) {
     // 第3關
-    const correctAnswer=getAnswer(chosenSymbol);
+    const correctAnswer = getAnswer(chosenSymbol);
     const OTPinputs = document.querySelectorAll("#level-3 .input_fields input");
     const userAnswer = Array.from(OTPinputs)
       .map((input) => input.value)
@@ -208,29 +204,34 @@ function checkAnswer() {
       popup.style.display = "block";
       popup.querySelector(".button-13").style.display = "block";
     } else {
-  popupText.textContent = "❌ 很可惜，這不是正確答案！";
-  popup.style.display = "block";
+      popupText.textContent = "❌ 很可惜，這不是正確答案！";
+      popup.style.display = "block";
 
-  OTPinputs.forEach((input, index) => {
-    if (input.value !== correctAnswer[index]) {
-      input.classList.add("input-error");
-    }
-  });
+      OTPinputs.forEach((input, index) => {
+        if (input.value !== correctAnswer[index]) {
+          input.classList.add("input-error");
+        }
+      });
 
-  setTimeout(() => {
-    OTPinputs.forEach((input) => {
-      input.classList.remove("input-error");
-      input.value = "";
-      input.disabled = false; // ✅ 全部都要能再輸入
-    });
-    setInputColors(chosenSymbol); 
-    setupAutoAdvanceInputs();  
+      setTimeout(() => {
+        OTPinputs.forEach((input) => {
+          input.classList.remove("input-error");
+          input.value = "";
+          input.disabled = false; // ✅ 全部都要能再輸入
+        });
+        setInputColors(chosenSymbol);
+        setupAutoAdvanceInputs();
 
-    OTPinputs[0].focus(); // 再次聚焦第一格
-    popup.style.display = "none";  // 隱藏 popup
-  }, 1000);
-}//else
-
+        OTPinputs[0].focus(); // 再次聚焦第一格
+        // ❗延遲 10ms 再隱藏 popup，避免 UI 被打斷
+        /*
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 10);
+    */
+        popup.style.display = "none"; // 隱藏 popup
+      }, 1000);
+    } //else
   } // 第3關 currentLevel == 2結束
 }
 
@@ -577,31 +578,27 @@ function nextLevel() {
   currentLevel++;
   if (currentLevel === 2) {
     /*alert("切換到第3關！");*/
-    
+
     document.getElementById("level-1").style.display = "none";
 
     document.getElementById("level-2").style.display = "none";
 
     document.getElementById("level-3").style.display = "block";
-    
+
     const OTPinputs = document.querySelectorAll("#level-3 .input_fields input");
- OTPinputs.forEach(input => {
-         
+    OTPinputs.forEach((input) => {
       input.disabled = false;
       input.value = "";
     });
 
-
-
     setCardLabels(chosenSymbol);
-    setInputColors(chosenSymbol); 
-    setupAutoAdvanceInputs();   
+    setInputColors(chosenSymbol);
+    setupAutoAdvanceInputs();
     OTPinputs[0].focus(); // 初始 focus 在第一格
-    
-    // 把符號放到「門」前面
-const sayEl = document.getElementById("level-3-say");
-sayEl.innerHTML = `請進入 ${symbols[chosenSymbol]} 門，並於答案卡輸入答案...`;
 
+    // 把符號放到「門」前面
+    const sayEl = document.getElementById("level-3-say");
+    sayEl.innerHTML = `請進入 ${symbols[chosenSymbol]} 門，並於答案卡輸入答案...`;
   } else if (currentLevel === 1) {
     /*alert("切換到第二關！");*/
     document.getElementById("level-1").style.display = "none";
@@ -613,7 +610,7 @@ sayEl.innerHTML = `請進入 ${symbols[chosenSymbol]} 門，並於答案卡輸�
     document.getElementById("level-2").style.display = "none";
 
     document.getElementById("level-3").style.display = "none";
-    
+
     showCompletionScreen();
   }
 }
