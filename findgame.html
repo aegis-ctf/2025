@@ -1,515 +1,677 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>福爾摩斯夢遊仙境</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福爾摩斯夢遊仙境</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
-    <h1>福爾摩斯夢遊仙境</h1><br>
+  <h1>福爾摩斯夢遊仙境</h1><br>
 
-    <div class="timer-container">
-        <div id="progressBar"><div></div></div>
-        <ul id="countdown">
-            <li><span id="minute" class="numbers">10</span><p class="name">minutes</p></li>
-            <li><span id="second" class="numbers">00</span><p class="name">seconds</p></li>
-        </ul>
-    </div>  <!-- 關閉 time-container -->
+  <div class="timer-container">
+    <div id="progressBar">
+      <div></div>
+    </div>
+    <ul id="countdown">
+      <li><span id="minute" class="numbers">10</span>
+        <p class="name">minutes</p>
+      </li>
+      <li><span id="second" class="numbers">00</span>
+        <p class="name">seconds</p>
+      </li>
+    </ul>
+  </div> <!-- 關閉 time-container -->
 
-    <div class="game-container" id="level-top">
-      <div id="level-1">
-         <!--機器人對話框-->
-<div class="robotBox">
-  <div class="robotIcon">
-    <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
-  </div>
-  <div class="bubble">
-    <div class="says">
-      <p>你來到了2019年，疫情爆發，遠距辦公盛行。你網購時誤入詐騙網站，個資與信用卡遭盜用！</p>
-    </div> <!--says結束-->
-  </div> <!--bubble結束-->
-</div><!--機器人對話框結束-->
-        <br>
-        <div class="browser">
-            <div class="browser-top">
-                <div class="browser-buttons">
-                    <span class="red"></span>
-                    <span class="yellow"></span>
-                    <span class="green"></span>
-                </div> <!-- 關閉 browser-buttons -->
-
-                <div class="tab">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Amazon_icon.svg" alt="Amazon Logo" class="tab-icon" style="width:16px; height:13px; background: #fff;"> Amazon.com。</div>  <!-- 關閉 tab -->
-            </div>  <!-- 關閉 browser-top -->
-
-            <div class="address-bar" onclick="checkAnswer()">
-                <span class="not-secure">⚠️ 不安全</span>
-                <span class="fake-url" id="fake-url">https://amaz0n.com</span>
-            </div>   <!-- 關閉 address-bar -->
-
-            <div class="fake-website" id="fake-content">
-                <div id="productDetail" class="productDetail">
-    <div class="product-detail-content">
-        <button id="closeBtn" class="closeBtn">&#xd7;</button>
-        <div class="product-detail-grid">
-
-            <div class="product-image">
-                <img class="product-image-large" id="detailImage" src alt>
-            </div>  <!-- 關閉 product-image -->
-
-            <div class="product-info">
-                <h2 id="detailTitle"></h2>
-                <div class="price" id="detailPrice"></div>
-                <div class="star-rating" id="detailRating"></div>
-                <p id="detailDescription" style="text-align:left;"></p>
-              <button class="cart-now-btn">新增到購物車</button>
-              <br>
-                <button class="buy-now-btn">立即購買</button>
-                
-            </div>  <!-- 關閉 product-info -->
-        
-        </div> <!-- 關閉 product-detail-grid -->
-
-        <div class="reviews-section">
-            <h3>顧客評論</h3>
-            <div id="reviewsContainer"></div>
-        </div>  <!-- 關閉 reviews-section -->
-    </div>   <!-- 關閉 product-detail-content -->
-</div>   <!-- 關閉 productDetail -->
-</div>   <!-- 關閉 fake-website -->
-
-<header class="header">
-    <a href="https://amazon-clone.example" class="logo">
-        <img src="https://companieslogo.com/img/orig/AMZN_BIG.D-8fb0be81.png?t=1740113564" alt="Amazon Logo" class="amazon-logo">
-        <div class="logo-container">
-            
-            <span class="small-text"></span>
+  <div class="game-container" id="level-top">
+    <div id="level-1">
+      <!--機器人對話框-->
+      <div class="robotBox">
+        <div class="robotIcon">
+          <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
         </div>
-    </a>
+        <div class="bubble">
+          <div class="says">
+            <p>你來到了2019年，疫情爆發，遠距辦公盛行。你網購時誤入詐騙網站，個資與信用卡遭盜用！</p>
+          </div>
+          <!--says結束-->
+        </div>
+        <!--bubble結束-->
+      </div>
+      <!--機器人對話框結束-->
+      <br>
+      <div class="browser">
+        <div class="browser-top">
+          <div class="browser-buttons">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+          </div> <!-- 關閉 browser-buttons -->
 
-    <div class="search-bar">
-        <input type="text" placeholder="搜尋Amazon">
-        <button><i class="fas fa-search"></i></button>
-    </div>
+          <div class="tab">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Amazon_icon.svg" alt="Amazon Logo" class="tab-icon" style="width:16px; height:13px; background: #fff;"> Amazon.com。
+          </div> <!-- 關閉 tab -->
+        </div> <!-- 關閉 browser-top -->
 
-    <nav class="nav-links">
-        <a href="https://amazon-clone.example/account">
-            <div>您好，登入</div>
-            <div><b>帳戶與清單</b></div>
-        </a>
-        <a href="https://amazon-clone.example/orders">
-            <div>退貨</div>
-            <div><b>與訂單</b></div>
-        </a>
-        <a href="https://amazon-clone.example/cart" class="cart-link">
-            <i class="fas fa-shopping-cart"></i> 
-        </a>
-    </nav>
+        <div class="address-bar" onclick="checkAnswer()">
+          <span class="not-secure">⚠️ 不安全</span>
+          <span class="fake-url" id="fake-url">https://amaz0n.com</span>
+        </div> <!-- 關閉 address-bar -->
 
-</header>
+        <div class="fake-website" id="fake-content">
+          <div id="productDetail" class="productDetail">
+            <div class="product-detail-content">
+              <button id="closeBtn" class="closeBtn">&#xd7;</button>
+              <div class="product-detail-grid">
 
-<nav class="secondary-nav">
-    <a href="https://amazon-clone.example/all"><i class="fas fa-bars"></i> 全部</a>
-    <a href="https://amazon-clone.example/deals">今日優惠</a>
-    <a href="https://amazon-clone.example/customer-service">客戶服務部</a>
-    <a href="https://amazon-clone.example/gift-cards">禮品卡</a>
-    
-</nav>
+                <div class="product-image">
+                  <img class="product-image-large" id="detailImage" src alt>
+                </div> <!-- 關閉 product-image -->
 
-<main class="products">
-    <div class="product-card">
-        <img src="https://store.sony.com.tw/resource/file/product_files/WH-1000XM5-P/48_f4ed13641.jpg" alt="Sony WH-1000XM5 Headphones">
-        <h3>Sony WH-1000XM5 <br>Wireless Headphones</h3>
-        
-        <div class="price">NT&#x24; 13,000</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(2,345)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+                <div class="product-info">
+                  <h2 id="detailTitle"></h2>
+                  <div class="price" id="detailPrice"></div>
+                  <div class="star-rating" id="detailRating"></div>
+                  <p id="detailDescription" style="text-align:left;"></p>
+                  <button class="cart-now-btn">新增到購物車</button>
+                  <br>
+                  <button class="buy-now-btn">立即購買</button>
 
-    <div class="product-card">
-        <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MXM83ref_FV99_VW_34FR+watch-case-46-aluminum-rosegold-nc-s10_VW_34FR+watch-face-46-aluminum-rosegold-s10_VW_34FR?wid=750&hei=712&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1725645481882" alt="Apple Watch Series 10">
-        <h3>Apple Watch <br>Series 10</h3>
-        <div class="price">NT&#x24; 16,023</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(4,521)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+                </div> <!-- 關閉 product-info -->
 
-    <div class="product-card"> 
-        <img src="https://m.media-amazon.com/images/I/71bmtncxa+L.jpg" alt="Samsung 55-inch TV">
-        <h3>Samsung QLED 4K Q60C TV</h3>
-        <div class="price">NT&#x24; 25,935</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(1,890)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+              </div> <!-- 關閉 product-detail-grid -->
 
+              <div class="reviews-section">
+                <h3>顧客評論</h3>
+                <div id="reviewsContainer"></div>
+              </div> <!-- 關閉 reviews-section -->
+            </div> <!-- 關閉 product-detail-content -->
+          </div> <!-- 關閉 productDetail -->
+        </div> <!-- 關閉 fake-website -->
 
-    <div class="product-card">
-        <img src="https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/ipad-pro-11-inch-13-inch.png" alt="iPad Pro">
-        <h3>Apple iPad Pro 11-inch</h3>
-        <div class="price">NT&#x24; 35,361</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(3,782)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+        <header class="header">
+          <a href="https://amazon-clone.example" class="logo">
+            <img src="https://companieslogo.com/img/orig/AMZN_BIG.D-8fb0be81.png?t=1740113564" alt="Amazon Logo" class="amazon-logo">
+            <div class="logo-container">
 
-    <div class="product-card">
-        <img src="https://i0.wp.com/uploads.saigacdn.com/2021/07/nintendo-switch-oled-model-00.jpg" alt="Nintendo Switch OLED">
-        <h3>Nintendo Switch OLED Model</h3>
-        <div class="price">NT&#x24; 12,611</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(8,234)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+              <span class="small-text"></span>
+            </div>
+          </a>
 
-    <div class="product-card">
-        <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1667850366/Croma%20Assets/Computers%20Peripherals/Tablets%20and%20iPads/Images/251101_0_cjns1e.png" alt="Kindle Paperwhite">
-        <h3>Kindle Paperwhite (16GB)</h3>
-        <div class="price">NT&#x24; 5,850</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(5,677)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+          <div class="search-bar">
+            <input type="text" placeholder="搜尋Amazon">
+            <button><i class="fas fa-search"></i></button>
+          </div>
 
-    <div class="product-card">
-        <img src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds_ii/product_silo_image/CTP-36312_ECOM_QCEII_Triple_Black_2.png/jcr:content/renditions/cq5dam.web.1920.1920.png" alt="BOSE">
-        <h3>Bose QuietComfort Earbuds II</h3>
-        <div class="price">NT&#x24; 5,360</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(3,129)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+          <nav class="nav-links">
+            <a href="https://amazon-clone.example/account">
+              <div>您好，登入</div>
+              <div><b>帳戶與清單</b></div>
+            </a>
+            <a href="https://amazon-clone.example/orders">
+              <div>退貨</div>
+              <div><b>與訂單</b></div>
+            </a>
+            <a href="https://amazon-clone.example/cart" class="cart-link">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </nav>
 
-    <div class="product-card">
-        <img src="https://down-tw.img.susercontent.com/file/tw-11134207-7r98u-lo2biksh534t91" alt="Marshall">
-        <h3>Marshall Acton III</h3>
-        <div class="price">NT&#x24; 7,480</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(892)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+        </header>
 
-    <div class="product-card">
-        <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1741278345/Croma%20Assets/Computers%20Peripherals/Laptop/Images/314077_czjks8.png" alt="MacBook Air">
-        <h3>MacBook Air M4</h3>
-        <div class="price">NT&#x24; 38,806</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(2,891)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+        <nav class="secondary-nav">
+          <a href="https://amazon-clone.example/all"><i class="fas fa-bars"></i> 全部</a>
+          <a href="https://amazon-clone.example/deals">今日優惠</a>
+          <a href="https://amazon-clone.example/customer-service">客戶服務部</a>
+          <a href="https://amazon-clone.example/gift-cards">禮品卡</a>
 
-    <div class="product-card">
-        <img src="https://cdn.shoplightspeed.com/shops/650021/files/52365725/1652x1652x1/canon-canon-eos-r50-mirrorless-camera.jpg" alt="Canon Camera">
-        <h3>Canon EOS R50</h3>
-        <div class="price">NT&#x24; 22,711</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(456)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+        </nav>
 
-    <div class="product-card">
-        <img src="https://action-v2-backend.b-cdn.net/38168/Pw36eX3hHQuH7i1jTjWD5iZluLYgP53wKtns2B2j.png" alt="PS5">
-        <h3>PlayStation 5 Console</h3>
-        <div class="price">NT&#x24; 15,270</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(4,532)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+        <main class="products">
+          <div class="product-card">
+            <img src="https://store.sony.com.tw/resource/file/product_files/WH-1000XM5-P/48_f4ed13641.jpg" alt="Sony WH-1000XM5 Headphones">
+            <h3>Sony WH-1000XM5 <br>Wireless Headphones</h3>
 
-    <div class="product-card">
-        <img src="https://m.media-amazon.com/images/I/514zE5WSO9L._AC_UF894,1000_QL80_.jpg" alt="Dyson">
-        <h3>Dyson Airstraight</h3>
-        <div class="price">NT&#x24; 16,213</div>
-        <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(987)</div>
-        <button class="cart-btn">新增到購物車</button>
-    </div>
+            <div class="price">NT&#x24; 13,000</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(2,345)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
 
-    <!-- 彈出警告 -->
-    <div class="popup" id="popup-1">
+          <div class="product-card">
+            <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MXM83ref_FV99_VW_34FR+watch-case-46-aluminum-rosegold-nc-s10_VW_34FR+watch-face-46-aluminum-rosegold-s10_VW_34FR?wid=750&hei=712&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1725645481882" alt="Apple Watch Series 10">
+            <h3>Apple Watch <br>Series 10</h3>
+            <div class="price">NT&#x24; 16,023</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(4,521)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://m.media-amazon.com/images/I/71bmtncxa+L.jpg" alt="Samsung 55-inch TV">
+            <h3>Samsung QLED 4K Q60C TV</h3>
+            <div class="price">NT&#x24; 25,935</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(1,890)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/ipad-pro-11-inch-13-inch.png" alt="iPad Pro">
+            <h3>Apple iPad Pro 11-inch</h3>
+            <div class="price">NT&#x24; 35,361</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(3,782)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://i0.wp.com/uploads.saigacdn.com/2021/07/nintendo-switch-oled-model-00.jpg" alt="Nintendo Switch OLED">
+            <h3>Nintendo Switch OLED Model</h3>
+            <div class="price">NT&#x24; 12,611</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(8,234)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1667850366/Croma%20Assets/Computers%20Peripherals/Tablets%20and%20iPads/Images/251101_0_cjns1e.png" alt="Kindle Paperwhite">
+            <h3>Kindle Paperwhite (16GB)</h3>
+            <div class="price">NT&#x24; 5,850</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(5,677)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://assets.bose.com/content/dam/cloudassets/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc_earbuds_ii/product_silo_image/CTP-36312_ECOM_QCEII_Triple_Black_2.png/jcr:content/renditions/cq5dam.web.1920.1920.png" alt="BOSE">
+            <h3>Bose QuietComfort Earbuds II</h3>
+            <div class="price">NT&#x24; 5,360</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(3,129)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://down-tw.img.susercontent.com/file/tw-11134207-7r98u-lo2biksh534t91" alt="Marshall">
+            <h3>Marshall Acton III</h3>
+            <div class="price">NT&#x24; 7,480</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(892)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1741278345/Croma%20Assets/Computers%20Peripherals/Laptop/Images/314077_czjks8.png" alt="MacBook Air">
+            <h3>MacBook Air M4</h3>
+            <div class="price">NT&#x24; 38,806</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#x2b50;<br>(2,891)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://cdn.shoplightspeed.com/shops/650021/files/52365725/1652x1652x1/canon-canon-eos-r50-mirrorless-camera.jpg" alt="Canon Camera">
+            <h3>Canon EOS R50</h3>
+            <div class="price">NT&#x24; 22,711</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(456)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://action-v2-backend.b-cdn.net/38168/Pw36eX3hHQuH7i1jTjWD5iZluLYgP53wKtns2B2j.png" alt="PS5">
+            <h3>PlayStation 5 Console</h3>
+            <div class="price">NT&#x24; 15,270</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(4,532)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <div class="product-card">
+            <img src="https://m.media-amazon.com/images/I/514zE5WSO9L._AC_UF894,1000_QL80_.jpg" alt="Dyson">
+            <h3>Dyson Airstraight</h3>
+            <div class="price">NT&#x24; 16,213</div>
+            <div>&#x2b50;&#x2b50;&#x2b50;&#x2b50;&#xbd;<br>(987)</div>
+            <button class="cart-btn">新增到購物車</button>
+          </div>
+
+          <!-- 彈出警告 -->
+          <div class="popup" id="popup-1">
+            <p id="popup-text"></p>
+
+            <button class="button-13" onclick="showCard(1)" role="button">查看提示</button>
+          </div>
+
+          <!-- 翻頁提示字卡 -->
+          <div class="card" id="card-1">
+            <p id="card-text"></p>
+            <div class="square-card"></div>
+            <!--square-card-->
+            <button class="button-13" onclick="nextLevel()" role="button">下一關</button>
+          </div>
+        </main>
+
+      </div> <!-- 關閉 browser -->
+
+    </div> <!-- 關閉 #level-1 -->
+
+    <!-- 第二關（預設隱藏）-->
+
+    <div id="level-2" style="display: none;">
+      <!--機器人對話框-->
+      <div class="robotBox">
+        <div class="robotIcon">
+          <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
+        </div>
+        <div class="bubble">
+          <div class="says">
+            <p>你在假Amazon網站購物後，收到商品瑕疵通知，決定聯繫客服機器人申請退款...</p>
+          </div>
+          <!--says結束-->
+        </div>
+        <!--bubble結束-->
+      </div>
+      <!--機器人對話框結束-->
+
+      <div class="chat-box">
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot">您好，請問有什麼需要服務的地方嗎？</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+        <div class="message user">我收到一封信，說我網購的商品有瑕疵。</div> <!-- 關閉message user -->
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot">了解，請提供訂單號碼，為您查詢</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+        <div class="message user">SD12385975，麻煩了~</div> <!-- 關閉message user -->
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot scam" onclick="checkAnswer()">親，經後台查詢，確實您購買的商品為次品</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot">請問您要辦理退貨還是換貨呢?</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+        <div class="message user">我要退貨</div> <!-- 關閉message user -->
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot">好的，請您提供姓名、電話、收件地址，我們將派車到府收貨</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+        <div class="message user">姓名：簡小字 <br>電話：0988919854</div> <!-- 關閉message user -->
+        <div class="message user">桃園市龍潭區中正路佳安段481號</div> <!-- 關閉message user -->
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot">麻煩至下列網址填寫信用卡資訊，將為您辦理退貨</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+        <div class="message user">謝謝您!</div> <!-- 關閉message user -->
+
+        <div class="botChat">
+          <div class="avatar">
+            <div class="pic">
+              <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
+            </div>
+            <!--結束pic-->
+          </div>
+          <!--結束avatar-->
+          <div class="message bot">不客氣🌹</div> <!-- 關閉message bot -->
+        </div>
+        <!--結束botChat
+-->
+
+      </div>
+      <!--關閉chat-box-->
+
+      <!-- 第二關的提示卡 -->
+      <div class="popup" id="popup-2" style="display: none;">
         <p id="popup-text"></p>
-      
-        <button class="button-13" onclick="showCard(1)" role="button">查看提示</button>
-    </div>
 
-    <!-- 翻頁提示字卡 -->
-    <div class="card" id="card-1">
-        <p id="card-text"></p>
-        <div class="square-card"></div><!--square-card-->
-        <button class="button-13" onclick="nextLevel()" role="button">下一關</button> 
-    </div>
-</main>  
+        <button class="button-13" onclick="showCard(2)">查看提示 </button>
+      </div>
+      <!--關閉popup-2-->
 
-</div>  <!-- 關閉 browser -->   
-     
-</div>  <!-- 關閉 #level-1 -->
- 
-  <!-- 第二關（預設隱藏）-->
+      <!-- 第二關翻頁提示字卡 -->
+      <div class="card" id="card-2" style="display: none;">
+        <div class="square-card"></div>
 
-<div id="level-2" style="display: none;">
-  <!--機器人對話框-->
-<div class="robotBox">
-  <div class="robotIcon">
-    <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
-  </div>
-  <div class="bubble">
-    <div class="says">
-      <p>你在假Amazon網站購物後，收到商品瑕疵通知，決定聯繫客服機器人申請退款...</p>
-    </div> <!--says結束-->
-  </div> <!--bubble結束-->
-</div><!--機器人對話框結束-->
-  
-<div class="chat-box">
+        <button class="button-13" onclick="showCard(3)">確認提示 </button>
+      </div>
+      <!--關閉card-2-->
 
-  <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot">您好，請問有什麼需要服務的地方嗎？</div>  <!-- 關閉message bot --> 
-  </div><!--結束botChat
--->
+      <!-- 第二關合併提示字卡 -->
+      <div class="card" id="card-3" style="display: none;">
+        <div class="square-card"></div>
 
-<div class="message user">我收到一封信，說我網購的商品有瑕疵。</div>  <!-- 關閉message user -->  
-
-  <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot">了解，請提供訂單號碼，為您查詢</div>  <!-- 關閉message bot --> 
-  </div><!--結束botChat
--->
-  
-   <div class="message user">SD12385975，麻煩了~</div>  <!-- 關閉message user -->
-  
-  <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot scam" onclick="checkAnswer()">親，經後台查詢，確實您購買的商品為次品</div>  <!-- 關閉message bot --> 
-  </div><!--結束botChat
--->
-  
-  <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot">請問您要辦理退貨還是換貨呢?</div>  <!-- 關閉message bot -->
-  </div><!--結束botChat
--->
-   
-    <div class="message user">我要退貨</div>  <!-- 關閉message user --> 
-  
-  <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot">好的，請您提供姓名、電話、收件地址，我們將派車到府收貨</div>  <!-- 關閉message bot -->
-  </div><!--結束botChat
--->
-  
-  <div class="message user">姓名：簡小字 <br>電話：0988919854</div>  <!-- 關閉message user -->
-  <div class="message user">桃園市龍潭區中正路佳安段481號</div>  <!-- 關閉message user -->
-  
-  <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot">麻煩至下列網址填寫信用卡資訊，將為您辦理退貨</div>  <!-- 關閉message bot -->
-  </div><!--結束botChat
--->
-  
-  <div class="message user">謝謝您!</div>  <!-- 關閉message user -->
-  
-    <div class="botChat">
-    <div class="avatar">
-      <div class="pic">
-        <img src="https://www.svgrepo.com/show/192522/customer-service-support.svg" />
-      </div><!--結束pic-->
-    </div><!--結束avatar-->
-    <div class="message bot">不客氣🌹</div>  <!-- 關閉message bot -->
-  </div><!--結束botChat
--->
-  
-  </div> <!--關閉chat-box-->
-  
-  <!-- 第二關的提示卡 -->
-    <div class="popup" id="popup-2" style="display: none;">
-    <p id="popup-text"></p>
-    
-    <button class="button-13" onclick="showCard(2)">查看提示 </button>
-    </div> <!--關閉popup-2-->
-
-   <!-- 第二關翻頁提示字卡 -->
-    <div class="card" id="card-2" style="display: none;">
-      <div class="square-card"></div>
-       
-        <button class="button-13" onclick="showCard(3)">確認提示 </button> 
-    </div> <!--關閉card-2-->
-  
-  <!-- 第二關合併提示字卡 -->
-    <div class="card" id="card-3" style="display: none;">
-      <div class="square-card"></div>
-       
         <button class="button-13" onclick="nextLevel()" role="button">下一關</button>
-    </div> <!--關閉card-3-->
+      </div>
+      <!--關閉card-3-->
 
-</div>  <!-- 關閉 #level-2 -->
+    </div> <!-- 關閉 #level-2 -->
 
-  <!-- 第三關（預設隱藏）-->
+    <!-- 第三關（預設隱藏）-->
 
-<div id="level-3" style="display: none;">
-  <!--機器人對話框-->
+    <div id="level-3" style="display: none;">
+      <!--機器人對話框-->
 
-<div class="robotBox">
-  <div class="robotIcon">
-    <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
-  </div>
-  <div class="bubble">
-    <div class="says">
-      <p id="level-3-say">請進入門，並於答案卡輸入答案...</p>
-    </div> <!--says結束-->
-  </div> <!--bubble結束-->
-</div><!--機器人對話框結束-->
+      <div class="robotBox">
+        <div class="robotIcon">
+          <img src="https://github.com/smiley123kc/2025aegis/blob/main/robot_detective.png?raw=true">
+        </div>
+        <div class="bubble">
+          <div class="says">
+            <p id="level-3-say">請進入門，並於答案卡輸入答案...</p>
+          </div>
+          <!--says結束-->
+        </div>
+        <!--bubble結束-->
+      </div>
+      <!--機器人對話框結束-->
 
-<div class="container">
+      <div class="container">
 
-  <h4>答案卡</h4>
+        <h4>答案卡</h4>
 
-  <form action="#">
-<div class="input_fields">
-  <div class="input-wrapper">
-    <div class="card-label"></div>
-   <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
-  </div> <!--input-wrapper結束-->
-  <div class="input-wrapper">
-    <div class="card-label"></div>
-    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" >
-  </div> <!--input-wrapper結束-->
-  <div class="input-wrapper">
-    <div class="card-label"></div>
-    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" >
-  </div> <!--input-wrapper結束-->
-  <div class="input-wrapper">
-    <div class="card-label"></div>
-    <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" >
-  </div> <!--input-wrapper結束-->
-</div> <!--input_fields結束-->
+        <form action="#">
+          <div class="input_fields">
+            <div class="input-wrapper">
+              <div class="card-label"></div>
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+            </div>
+            <!--input-wrapper結束-->
+            <div class="input-wrapper">
+              <div class="card-label"></div>
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+            </div>
+            <!--input-wrapper結束-->
+            <div class="input-wrapper">
+              <div class="card-label"></div>
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+            </div>
+            <!--input-wrapper結束-->
+            <div class="input-wrapper">
+              <div class="card-label"></div>
+              <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1">
+            </div>
+            <!--input-wrapper結束-->
+          </div>
+          <!--input_fields結束-->
 
-          
-    <!-- 第3關的提示卡 -->
-    <button class="button" type="button" onclick="checkAnswer()">確認送出</button>
-  </form>
+          <!-- 第3關的提示卡 -->
+          <button class="button" type="button" onclick="checkAnswer()">確認送出</button>
+        </form>
 
-</div><!--container結束-->  
+      </div>
+      <!--container結束-->
 
- <!--
+      <!--
       <button class="button-13" onclick="nextLevel()" style="display: none;">結束遊戲</button>  -->
-<!-- popup-3（內含答對訊息 + 結束遊戲按鈕） -->
-<div class="popup" id="popup-3" style="display:none;">
-  <p id="popup-text"></p>
-  <button class="button-13" onclick="nextLevel()" style="display:none;" >結束遊戲</button>
-</div>
-    
+      <!-- popup-3（內含答對訊息 + 結束遊戲按鈕） -->
+      <div class="popup" id="popup-3" style="display:none;">
+        <p id="popup-text"></p>
+        <button class="button-13" onclick="nextLevel()" style="display:none;">結束遊戲</button>
+      </div>
 
-</div>  <!-- 關閉 #level-3 -->      
-            
-<div id="completion-screen" class="completion-container" style="display: none;">
-    <h2>✨恭喜你闖關成功並取得鑰匙！✨</h2>
-  <!-- ✅ 新增這個答案卡顯示區 -->
-  <!--
+    </div> <!-- 關閉 #level-3 -->
+
+    <div id="completion-screen" class="completion-container" style="display: none;">
+      <h2>✨恭喜你闖關成功並取得鑰匙！✨</h2>
+      <!-- ✅ 新增這個答案卡顯示區 -->
+      <!--
   <div id="final-answer-display" class="answer-display"></div>
 -->
-  <div class="Qrcode">
-  <img src="https://github.com/smiley123kc/2025aegis/blob/main/qrcode_smiley123kc.png?raw=true">
-</div> <!--Qrcode end-->   
-<div class="fireworks">
-	<div class="firework">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-	<div class="firework" style="margin-top: -70px">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-	<div class="firework">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-	<div class="firework" style="margin-top: 70px">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-	<div class="firework">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-	<div class="firework" style="margin-top: -70px">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-	<div class="firework">
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark red"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-		<div class="explosion"><div class="spark blue"></div></div>
-		<div class="explosion"><div class="spark green"></div></div>
-		<div class="explosion"><div class="spark yellow"></div></div>
-	</div>
-</div>  
-      
-    
-</div> <!-- 關閉 completion-screen -->     
-      
-</div>  <!-- 關閉 game-container -->
+      <div class="Qrcode">
+        <img src="https://github.com/smiley123kc/2025aegis/blob/main/qrcode_smiley123kc.png?raw=true">
+      </div>
+      <!--Qrcode end-->
+      <div class="fireworks">
+        <div class="firework">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+        <div class="firework" style="margin-top: -70px">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+        <div class="firework">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+        <div class="firework" style="margin-top: 70px">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+        <div class="firework">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+        <div class="firework" style="margin-top: -70px">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+        <div class="firework">
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark red"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark blue"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark green"></div>
+          </div>
+          <div class="explosion">
+            <div class="spark yellow"></div>
+          </div>
+        </div>
+      </div>
 
-<div id="gameOverScreen">
-    <div class="text-glitch" data-text="GAME OVER">GAME OVER</div><!--結束text-glitch-->
-</div> <!--結束gameOverScreen-->
-  
-<script src="script.js"></script>
+    </div> <!-- 關閉 completion-screen -->
+
+  </div> <!-- 關閉 game-container -->
+
+  <div id="gameOverScreen">
+    <div class="text-glitch" data-text="GAME OVER">GAME OVER</div>
+    <!--結束text-glitch-->
+  </div>
+  <!--結束gameOverScreen-->
+
+  <script src="script.js"></script>
 
 </body>
+
 </html>
