@@ -601,7 +601,7 @@ function nextLevel() {
 
     // 把符號放到「門」前面
     const sayEl = document.getElementById("level-3-say");
-    sayEl.innerHTML = `請進入 ${symbols[chosenSymbol]} 門，並於答案卡輸入答案...`;
+    sayEl.innerHTML = `請尋找 ${symbols[chosenSymbol]} ，並於答案卡輸入答案...`;
   } else if (currentLevel === 1) {
     /*alert("切換到第二關！");*/
     document.getElementById("level-1").style.display = "none";
