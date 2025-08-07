@@ -177,6 +177,7 @@ function renderAnswerDisplay() {
   });
 }
 
+let level2Completed = false;
 // 檢查答案
 function checkAnswer() {
   /*alert(levels[currentLevel].message); */
@@ -186,9 +187,11 @@ function checkAnswer() {
   if (currentLevel == 0) {
     document.getElementById("popup-1").style.display = "block";
   } else if (currentLevel == 1) {
+    if (level2Completed) return; // ✅ 如果已經觸發過就不再執行
+    level2Completed = true; // ✅ 第一次觸發就設為 true
     document.getElementById("popup-2").style.display = "block";
     document.querySelector("#popup-2 #popup-text").innerText =
-      levels[currentLevel].message;
+    levels[currentLevel].message;
   } else if (currentLevel == 2) {
     // 第3關
     const correctAnswer = getAnswer(chosenSymbol);
