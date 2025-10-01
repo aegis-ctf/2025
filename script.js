@@ -28,8 +28,9 @@ const symbolOrders = {
   //answers
   heart: ["beige", "green", "yellow", "orange"], // 3214
   diamond: ["yellow", "beige", "green", "orange"], // 1324
-  club: ["green", "orange", "beige", "yellow"], // 2431
-  spade: ["orange", "green", "yellow", "beige"] // 4213
+  spade: ["orange", "green", "yellow", "beige"], // 4213
+  club: ["green", "orange", "beige", "yellow"] // 2431
+  
 };
 
 const colorMap = {
@@ -42,9 +43,10 @@ const colorMap = {
 
 const cardLabels = {
   heart: ["J", "Q", "K", "A"],
-  diamond: ["K", "Q", "A", "J"],
-  club: ["A", "Q", "K", "J"],
-  spade: ["Q", "A", "K", "J"]
+  diamond: ["K", "J", "Q", "A"],
+  spade: ["A", "Q", "K", "J"],
+  club: ["Q", "A", "J", "K"]
+  
 };
 
 function setCardLabels(symbol) {
@@ -177,6 +179,7 @@ function renderAnswerDisplay() {
   });
 }
 
+
 let level2Completed = false;
 // 檢查答案
 function checkAnswer() {
@@ -188,10 +191,13 @@ function checkAnswer() {
     document.getElementById("popup-1").style.display = "block";
   } else if (currentLevel == 1) {
     if (level2Completed) return; // ✅ 如果已經觸發過就不再執行
+
     level2Completed = true; // ✅ 第一次觸發就設為 true
+
     document.getElementById("popup-2").style.display = "block";
     document.querySelector("#popup-2 #popup-text").innerText =
-    levels[currentLevel].message;
+      levels[currentLevel].message;
+
   } else if (currentLevel == 2) {
     // 第3關
     const correctAnswer = getAnswer(chosenSymbol);
