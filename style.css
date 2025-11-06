@@ -219,6 +219,7 @@ ul#countdown {
 }
     
 .header {
+    pointer-events:none;
     background-color: #131921;
     padding: 10px ;
     color: white;
@@ -237,6 +238,7 @@ ul#countdown {
 }
     
 .amazon-logo{
+  pointer-events:none;
   height:30px;
   width:auto;
   display:block;
@@ -367,6 +369,7 @@ ul#countdown {
 }
     
 .secondary-nav {
+    pointer-events:none;
     background: #232f3e;
     padding: 10px 0;
     display:flex;
