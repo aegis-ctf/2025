@@ -19,7 +19,7 @@ const chosenSymbol = types[Math.floor(Math.random() * types.length)];
 
 const baseDigits = {
   beige: 3,
-  green: 2,
+  green: 3,
   yellow: 1,
   orange: 4
 };
@@ -35,10 +35,10 @@ const symbolOrders = {
 
 const colorMap = {
   //answers
-  1: "#FADA7A", // yellow
-  2: "#B1C29E", // green
+  1: "#FCE7C8", // yellow
+  2: "#FCE7C8", // green
   3: "#FCE7C8", // beige
-  4: "#F0A04B" // orange
+  4: "#FCE7C8" // orange
 };
 
 const cardLabels = {
@@ -303,15 +303,15 @@ const productData = {
       "https://i0.wp.com/uploads.saigacdn.com/2021/07/nintendo-switch-oled-model-00.jpg"
   },
 
-  "Kindle Paperwhite (16GB)": {
+  "Dunhill Christmas Tree": {
     description:
-      "Amazon推出的電子紙閱讀器，採用7吋300ppi的Paperwhite顯示器，具備IPX8防水等級，可以在浴室或泳池邊安心閱讀。",
+      "這款 Dunhill 樅樹全人造綠色聖誕樹高 9 英尺(約 2.7 公分),底座直徑 66 英吋(約 167.6 公分)。 這款樹擁有數百種獨立製作的樹枝,創造出濃郁的樹枝,設計出栩栩如生。",
     reviews: [
-      { rating: 5, comment: "電子書很方便攜帶!", author: "Henry" },
-      { rating: 3, comment: "電子紙閱讀器畫質不夠高。", author: "Percy" }
+      { rating: 5, comment: "Amazon上買很方便!", author: "Henry" },
+      { rating: 3, comment: "聖誕節可以很有氣氛的過了！", author: "Percy" }
     ],
     imageUrl:
-      "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1667850366/Croma%20Assets/Computers%20Peripherals/Tablets%20and%20iPads/Images/251101_0_cjns1e.png"
+      "https://m.media-amazon.com/images/I/91ATtoCsVwL._AC_SY450_.jpg"
   },
 
   "Bose QuietComfort Earbuds II": {
